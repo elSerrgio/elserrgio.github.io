@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Backend Test</title>
+</head>
+<body>
+  <h1>Backend Connectivity Test</h1>
+
+  <button id="testButton">Test Backend</button>
+  <p id="result"></p>
+
+  <script>
+    document.getElementById("testButton").onclick = async function() {
+      const resultEl = document.getElementById("result");
+      resultEl.innerText = "Checking...";
+
+      try {
+        const response = await fetch("https://elserrgio-transcribe-audio.hf.space/test/");
+        if (response.ok) {
+          const data = await response.json();
+          resultEl.innerText = data.message;
+        } else {
+          resultEl.innerText = "Request failed with status: " + response.status;
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        resultEl.innerText = "Could not reach backend.";
+      }
+    };
+  </script>
+</body>
+</html>
