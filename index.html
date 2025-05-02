@@ -16,7 +16,7 @@
       resultEl.innerText = "Checking...";
 
       try {
-        const response = await fetch("https://elserrgio-transcribe-audio.hf.space/test/");
+        const response = await fetch("https://elserrgio-transcribe-audio.hf.space/");
         if (response.ok) {
           const data = await response.json();
           resultEl.innerText = data.message;
