@@ -35,3 +35,27 @@ pre {
     border-radius: 5px;
     text-align: left;
 }
+#checkServerButton {
+    position: fixed;         /* Sticks it to the viewport */
+    bottom: 50px;               /* Distance from top */
+    right: 10px;             /* Distance from right */
+    padding: 4px 8px;        /* Smaller padding */
+    font-size: 12px;         /* Smaller text */
+    background-color: #eee;  /* Light background */
+    border: 1px solid #ccc;  /* Subtle border */
+    border-radius: 4px;      /* Rounded corners */
+    cursor: pointer;         /* Pointer on hover */
+    z-index: 1000;           /* Make sure it's above other elements */
+}
+#serverStatus {
+    position: fixed;         /* Sticks it to the viewport */
+    bottom: 10px;               /* Distance from top */
+    right: 10px;             /* Distance from right */
+    padding: 4px 8px;        /* Smaller padding */
+    font-size: 12px;         /* Smaller text */
+    background-color: #eee;  /* Light background */
+    border: 1px solid #ccc;  /* Subtle border */
+    border-radius: 4px;      /* Rounded corners */
+    cursor: pointer;         /* Pointer on hover */
+    z-index: 1000;           /* Make sure it's above other elements */
+}
