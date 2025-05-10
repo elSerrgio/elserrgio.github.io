@@ -12,13 +12,31 @@
         <p>Upload an audio file and get the transcribed text instantly.</p>
 
         <input type="file" id="fileInput" accept="audio/*" required>
-        <button id="transcribeButton">Transcribe</button>
 
+        <label for="languageSelect">Language:</label>
+        <select id="languageSelect">
+            <option value="auto" selected>Auto Detect</option>
+            <option value="en">English</option>
+            <option value="de">German</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="it">Italian</option>
+            <option value="ru">Russian</option>
+            <option value="zh">Chinese</option>
+        </select>
+
+        <button id="transcribeButton">Transcribe</button>
+        
         <h2>Transcription Result:</h2>
         <pre id="transcribeResult"></pre>
-
+        
+        <!-- 
         <button id="checkServerButton">Check Server Status</button>
         <p id="serverStatus"></p>
+        -->
+        
+        <button id="downloadButton">Download Transcription</button>
+
     </div>
 
     <script>
@@ -39,18 +57,24 @@
             }
         };
 
-        document.getElementById("transcribeButton").onclick = async function() {
+        // Global variable to store transcription
+        let transcriptionText = "";
+
+        document.getElementById("transcribeButton").onclick = async function () {
             let fileInput = document.getElementById("fileInput");
             let file = fileInput.files[0];
+            const language = document.getElementById("languageSelect").value;
 
             if (!file) {
                 alert("Please select an audio file.");
                 return;
             }
 
+            document.getElementById("transcribeResult").innerText = "Transcribing...";
+
             let formData = new FormData();
             formData.append("file", file);
-            document.getElementById("transcribeResult").innerText = "Transcribing...";
+            formData.append("language", language);
 
             try {
                 let response = await fetch("https://elserrgio-transcribe-audio.hf.space/transcribe/", {
@@ -58,19 +82,41 @@
                     body: formData
                 });
 
-                // Check if the response is ok
                 if (response.ok) {
                     let data = await response.json();
-                    document.getElementById("transcribeResult").innerText = data.transcription || "No transcription available.";
+                    transcriptionText = data.transcription;
+                    const lettersToShow = 150;
+                    const transcriptionTextShow = transcriptionText.length > lettersToShow ? transcriptionText.slice(0, lettersToShow) + "..." : transcriptionText;
+
+                    document.getElementById("transcribeResult").innerText = transcriptionTextShow !== undefined && transcriptionTextShow !== null
+                            ? transcriptionTextShow : "No transcription available.";
                 } else {
                     document.getElementById("transcribeResult").innerText = "Transcription failed with status: " + response.status;
                 }
 
             } catch (error) {
                 console.error("Error:", error);
-                document.getElementById("transcribeResult").innerText = "Transcription failed.";
+                document.getElementById("transcribeResult").innerText = "Upps, an error occured!";
             }
         };
+
+        document.getElementById("downloadButton").onclick = function () {
+            if (!transcriptionText) {
+                alert("Nothing to download. Please transcribe first.");
+                return;
+            }
+
+            const blob = new Blob([transcriptionText], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "transcription.txt";
+            a.click();
+
+            URL.revokeObjectURL(url);
+        };
     </script>
+
 </body>
 </html>
