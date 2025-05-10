@@ -23,6 +23,7 @@
             <option value="it">Italian</option>
             <option value="ru">Russian</option>
             <option value="zh">Chinese</option>
+            <option value="tr">Turkish</option>
         </select>
 
         <button id="transcribeButton">Transcribe</button>
@@ -84,7 +85,7 @@
                 if (response.ok) {
                     let data = await response.json();
                     transcriptionText = data.transcription;
-                    const lettersToShow = 150;
+                    const lettersToShow = 30;
                     const transcriptionTextShow = transcriptionText.length > lettersToShow ? transcriptionText.slice(0, lettersToShow) + "..." : transcriptionText;
 
                     document.getElementById("transcribeResult").innerText = transcriptionTextShow !== undefined && transcriptionTextShow !== null
