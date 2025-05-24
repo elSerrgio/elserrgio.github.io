@@ -3,81 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Audio Transcription</title>
-    <link rel="stylesheet" href="style.css">
+    <title>AudioScribe - Professional Audio Transcription</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">AudioScribe</a>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="faq.html">FAQ</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
     <div class="container">
-        <h1>AI Audio Transcription</h1>
-        <p>Upload an audio file and get the transcribed text instantly.</p>
+        <div class="header">
+            <div class="logo">AudioScribe</div>
+            <div class="subtitle">Professional Audio Transcription Service</div>
+        </div>
 
-        <input type="file" id="fileInput" accept="audio/*" required>
+        <form id="transcriptionForm">
+            <div class="form-group">
+                <label class="form-label">Upload Audio File</label>
+                <div class="file-upload-area" id="fileUploadArea">
+                    <div class="upload-icon">🎵</div>
+                    <div class="upload-text">Drop your audio file here or click to browse</div>
+                    <div class="upload-hint">Supports MP3, WAV, M4A, OGG files up to 50MB</div>
+                    <input type="file" class="file-input" id="fileInput" accept="audio/*">
+                </div>
+                <div class="file-info" id="fileInfo">
+                    <div class="file-icon">🎵</div>
+                    <div class="file-details">
+                        <div class="file-name" id="fileName"></div>
+                        <div class="file-size" id="fileSize"></div>
+                    </div>
+                </div>
+            </div>
 
-        <label for="languageSelect">Language:</label>
-        <select id="languageSelect">
-            <option value="auto" selected>Auto Detect</option>
-            <option value="en">English</option>
-            <option value="de">German</option>
-            <option value="es">Spanish</option>
-            <option value="fr">French</option>
-            <option value="it">Italian</option>
-            <option value="ru">Russian</option>
-            <option value="zh">Chinese</option>
-            <option value="tr">Turkish</option>
-        </select>
+            <div class="form-group">
+                <label class="form-label" for="languageSelect">Select Language</label>
+                <div class="select-wrapper">
+                    <select class="language-select" id="languageSelect">
+                        <option value="auto" selected>Auto Detect</option>
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="it">Italian</option>
+                        <option value="pt">Portuguese</option>
+                        <option value="ru">Russian</option>
+                        <option value="ja">Japanese</option>
+                        <option value="ko">Korean</option>
+                        <option value="zh">Chinese</option>
+                        <option value="ar">Arabic</option>
+                        <option value="hi">Hindi</option>
+                    </select>
+                </div>
+            </div>
 
-        <button id="transcribeButton">Transcribe</button>
-        
-        <h2>Transcription Result:</h2>
-        <pre id="transcribeResult"></pre>
-        
-        <button id="checkServerButton">Check Server Status</button>
-        <p id="serverStatus"></p>
-        
-        
-        <button id="downloadButton">Download Transcription</button>
+            <button type="button" class="transcribe-btn" id="transcribeButton">
+                <span class="loading">⏳</span>
+                <span class="btn-text">Transcribe Audio</span>
+            </button>
+        </form>
 
+        <div class="result-section" id="resultSection">
+            <div class="result-header">
+                <div class="result-title">Transcription Result</div>
+                <div class="result-actions">
+                    <button class="action-btn" id="expandButton">View Full</button>
+                    <button class="action-btn" id="downloadButton">Download</button>
+                    <button class="action-btn copy-btn" id="copyButton">Copy</button>
+                </div>
+            </div>
+            <div class="transcription-result" id="transcribeResult"></div>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
     </div>
 
-    <script>
-        document.getElementById("checkServerButton").onclick = async function() {
-            try {
-                const response = await fetch("https://elserrgio-transcribe-audio.hf.space/test/");
-                if (response.ok) {
-                    const data = await response.json();
-                    document.getElementById("serverStatus").innerText = data.message;
-                } else {
-                    document.getElementById("serverStatus").innerText = 
-                        "Server responded with status: " + response.status;
-                }
-            } catch (error) {
-                console.error("Server check failed:", error);
-                document.getElementById("serverStatus").innerText = 
-                    "Failed to reach the server.";
-            }
-        };
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="features-container">
+            <h2 class="features-title">Why Choose AudioScribe?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>High Accuracy</h3>
+                    <p>Powered by state-of-the-art Whisper AI technology for precise transcriptions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Multiple Languages</h3>
+                    <p>Support for 12+ languages with automatic language detection</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Private</h3>
+                    <p>Your files are processed securely and deleted after transcription</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast Processing</h3>
+                    <p>Get your transcriptions in minutes, not hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>AudioScribe</h4>
+                <p>Professional audio transcription service powered by AI</p>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="mailto:support@audioscribe.com">Contact Us</a></li>
+                    <li><a href="#features">Features</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AudioScribe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
         // Global variable to store transcription
         let transcriptionText = "";
+        let isExpanded = false;
 
+        // File upload handling
+        const fileInput = document.getElementById("fileInput");
+        const fileUploadArea = document.getElementById("fileUploadArea");
+        const fileInfo = document.getElementById("fileInfo");
+
+        fileUploadArea.addEventListener('click', () => fileInput.click());
+        
+        fileUploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileUploadArea.classList.add('dragover');
+        });
+
+        fileUploadArea.addEventListener('dragleave', () => {
+            fileUploadArea.classList.remove('dragover');
+        });
+
+        fileUploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileUploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+                showFileInfo(files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                showFileInfo(e.target.files[0]);
+            }
+        });
+
+        function showFileInfo(file) {
+            document.getElementById('fileName').textContent = file.name;
+            document.getElementById('fileSize').textContent = formatFileSize(file.size);
+            fileInfo.classList.add('show');
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Transcription functionality
         document.getElementById("transcribeButton").onclick = async function () {
-            let fileInput = document.getElementById("fileInput");
             let file = fileInput.files[0];
             const language = document.getElementById("languageSelect").value;
 
             if (!file) {
-                alert("Please select an audio file.");
+                showError("Please select an audio file.");
                 return;
             }
 
-            document.getElementById("transcribeResult").innerText = "Transcribing...";
+            // Show loading state
+            const button = document.getElementById("transcribeButton");
+            button.classList.add('loading');
+            button.disabled = true;
+            
+            // Hide previous results and errors
+            document.getElementById("resultSection").classList.remove('show');
+            document.getElementById("errorMessage").classList.remove('show');
 
             let formData = new FormData();
             formData.append("file", file);
             formData.append("language", language);
 
             try {
-                let response = await fetch("https://elserrgio-transcribe-audio.hf.space/transcribe/", {
+                //let response = await fetch("https://elserrgio-transcribe-audio.hf.space/transcribe/", {
+                let response = await fetch("http://127.0.0.1:8000/transcribe/", {
+
                     method: "POST",
                     body: formData
                 });
@@ -85,24 +231,57 @@
                 if (response.ok) {
                     let data = await response.json();
                     transcriptionText = data.transcription;
-                    const lettersToShow = 30;
-                    const transcriptionTextShow = transcriptionText.length > lettersToShow ? transcriptionText.slice(0, lettersToShow) + "..." : transcriptionText;
-
-                    document.getElementById("transcribeResult").innerText = transcriptionTextShow !== undefined && transcriptionTextShow !== null
-                            ? transcriptionTextShow : "No transcription available.";
+                    
+                    if (transcriptionText) {
+                        displayTranscription();
+                        document.getElementById("resultSection").classList.add('show');
+                    } else {
+                        showError("No transcription available.");
+                    }
                 } else {
-                    document.getElementById("transcribeResult").innerText = "Transcription failed with status: " + response.status;
+                    showError(`Transcription failed with status: ${response.status}`);
                 }
 
             } catch (error) {
                 console.error("Error:", error);
-                document.getElementById("transcribeResult").innerText = "Upps, an error occured!";
+                showError("Oops, an error occurred! Please try again.");
+            } finally {
+                // Remove loading state
+                button.classList.remove('loading');
+                button.disabled = false;
             }
         };
 
+        function displayTranscription() {
+            const resultDiv = document.getElementById("transcribeResult");
+            const lettersToShow = 200;
+            
+            if (isExpanded || transcriptionText.length <= lettersToShow) {
+                resultDiv.textContent = transcriptionText;
+                document.getElementById("expandButton").textContent = "Collapse";
+            } else {
+                const truncatedText = transcriptionText.slice(0, lettersToShow) + "...";
+                resultDiv.textContent = truncatedText;
+                document.getElementById("expandButton").textContent = "View Full";
+            }
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById("errorMessage");
+            errorDiv.textContent = message;
+            errorDiv.classList.add('show');
+        }
+
+        // Expand/Collapse functionality
+        document.getElementById("expandButton").onclick = function () {
+            isExpanded = !isExpanded;
+            displayTranscription();
+        };
+
+        // Download functionality
         document.getElementById("downloadButton").onclick = function () {
             if (!transcriptionText) {
-                alert("Nothing to download. Please transcribe first.");
+                showError("Nothing to download. Please transcribe first.");
                 return;
             }
 
@@ -116,7 +295,27 @@
 
             URL.revokeObjectURL(url);
         };
-    </script>
 
+        // Copy functionality
+        document.getElementById("copyButton").onclick = async function () {
+            if (!transcriptionText) {
+                showError("Nothing to copy. Please transcribe first.");
+                return;
+            }
+
+            try {
+                await navigator.clipboard.writeText(transcriptionText);
+                const button = document.getElementById("copyButton");
+                const originalText = button.textContent;
+                button.textContent = "Copied!";
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                showError("Failed to copy text to clipboard.");
+            }
+        };
+    </script>
 </body>
 </html>
