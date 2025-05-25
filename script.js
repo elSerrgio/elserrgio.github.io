@@ -1,7 +1,7 @@
 // Website configuration - Change the site name here
 const SITE_CONFIG = {
-    name: "Queen Of The Boobs",
-    title: "Queen Of The Boobs - Professional Audio Transcription"
+    name: "AudioScribe",
+    title: "AudioScribe - Professional Audio Transcription"
 };
 
 // Global variable to store transcription
