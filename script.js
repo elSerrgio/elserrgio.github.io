@@ -1,6 +1,11 @@
+// Website configuration - Change the site name here
+const SITE_CONFIG = {
+    name: "Queen Of The Boobs",
+    title: "Queen Of The Boobs - Professional Audio Transcription"
+};
+
 // Global variable to store transcription
 let transcriptionText = "";
-let isExpanded = false;
 
 // File upload handling
 const fileInput = document.getElementById("fileInput");
@@ -9,10 +14,60 @@ const fileInfo = document.getElementById("fileInfo");
 
 // Initialize event listeners when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    initializeSiteName();
     initializeFileUpload();
     initializeTranscription();
     initializeResultActions();
+    initializeFAQ();
 });
+
+// Initialize site name throughout the website
+function initializeSiteName() {
+    // Update page title
+    document.getElementById('site-title').textContent = SITE_CONFIG.title;
+    
+    // Update navigation logo
+    document.getElementById('nav-logo-text').textContent = SITE_CONFIG.name;
+    
+    // Update main logo
+    document.getElementById('main-logo').textContent = SITE_CONFIG.name;
+    
+    // Update features section
+    document.getElementById('features-site-name').textContent = SITE_CONFIG.name;
+    
+    // Update FAQ section
+    document.getElementById('faq-site-name-1').textContent = SITE_CONFIG.name;
+    
+    // Update footer
+    document.getElementById('footer-site-name').textContent = SITE_CONFIG.name;
+    document.getElementById('footer-copyright-name').textContent = SITE_CONFIG.name;
+}
+
+// FAQ functionality
+function initializeFAQ() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    // Hide all answers initially
+    document.querySelectorAll('.faq-answer').forEach(answer => {
+        answer.style.display = 'none';
+    });
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const faqId = this.getAttribute('data-faq');
+            const answer = document.getElementById(`faq-${faqId}`);
+            
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                answer.style.display = 'block';
+                answer.style.animation = 'fadeInUp 0.3s ease';
+                this.classList.add('active');
+            } else {
+                answer.style.display = 'none';
+                this.classList.remove('active');
+            }
+        });
+    });
+}
 
 // File Upload Functions
 function initializeFileUpload() {
@@ -118,16 +173,7 @@ async function transcribeAudio() {
 
 function displayTranscription() {
     const resultDiv = document.getElementById("transcribeResult");
-    const lettersToShow = 200;
-    
-    if (isExpanded || transcriptionText.length <= lettersToShow) {
-        resultDiv.textContent = transcriptionText;
-        document.getElementById("expandButton").textContent = "Collapse";
-    } else {
-        const truncatedText = transcriptionText.slice(0, lettersToShow) + "...";
-        resultDiv.textContent = truncatedText;
-        document.getElementById("expandButton").textContent = "View Full";
-    }
+    resultDiv.textContent = transcriptionText;
 }
 
 function showError(message) {
@@ -138,12 +184,6 @@ function showError(message) {
 
 // Result Action Functions
 function initializeResultActions() {
-    // Expand/Collapse functionality
-    document.getElementById("expandButton").addEventListener('click', function() {
-        isExpanded = !isExpanded;
-        displayTranscription();
-    });
-
     // Download functionality
     document.getElementById("downloadButton").addEventListener('click', function() {
         if (!transcriptionText) {

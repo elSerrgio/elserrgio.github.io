@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AudioScribe - Professional Audio Transcription</title>
+    <title id="site-title">AudioScribe - Professional Audio Transcription</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,14 +11,14 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="#home">AudioScribe</a>
+                <a href="#home" id="nav-logo-text">AudioScribe</a>
             </div>
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#features">Features</a>
                 <a href="#faq">FAQ</a>
-                <a href="#privacy">Privacy</a>
-                <a href="#terms">Terms</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
             </div>
         </div>
     </nav>
@@ -27,8 +27,16 @@
     <section id="home" class="section">
         <div class="container">
             <div class="header">
-                <div class="logo">AudioScribe</div>
+                <div class="logo" id="main-logo">AudioScribe</div>
                 <div class="subtitle">Professional Audio Transcription Service</div>
+            </div>
+
+            <!-- Buy Me a Coffee Button -->
+            <div class="support-section">
+                <a href="https://buymeacoffee.com/elserrgio" target="_blank" class="buymeacoffee-btn">
+                    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="200">
+                </a>
+                <p class="support-text">Support our work</p>
             </div>
 
             <form id="transcriptionForm">
@@ -80,7 +88,6 @@
                 <div class="result-header">
                     <div class="result-title">Transcription Result</div>
                     <div class="result-actions">
-                        <button class="action-btn" id="expandButton">View Full</button>
                         <button class="action-btn" id="downloadButton">Download</button>
                         <button class="action-btn copy-btn" id="copyButton">Copy</button>
                     </div>
@@ -95,25 +102,41 @@
     <!-- Features Section -->
     <section id="features" class="section features-section">
         <div class="features-container">
-            <h2 class="features-title">Why Choose AudioScribe?</h2>
+            <h2 class="features-title">Why Choose <span id="features-site-name">AudioScribe</span>?</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                     <h3>High Accuracy</h3>
                     <p>Powered by state-of-the-art Whisper AI technology for precise transcriptions</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                     <h3>Multiple Languages</h3>
                     <p>Support for 12+ languages with automatic language detection</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                     <h3>Secure & Private</h3>
                     <p>Your files are processed securely and deleted after transcription</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                     <h3>Fast Processing</h3>
                     <p>Get your transcriptions in minutes, not hours</p>
                 </div>
@@ -127,171 +150,60 @@
             <h2 class="page-title">Frequently Asked Questions</h2>
             <div class="page-content">
                 <div class="faq-item">
-                    <h3>What audio formats are supported?</h3>
-                    <p>AudioScribe supports all major audio formats including MP3, WAV, M4A, OGG, FLAC, and more. Files can be up to 50MB in size.</p>
+                    <h3 class="faq-question" data-faq="1">What audio formats are supported?</h3>
+                    <div class="faq-answer" id="faq-1">
+                        <p><span id="faq-site-name-1">AudioScribe</span> supports all major audio formats including MP3, WAV, M4A, OGG, FLAC, and more. Files can be up to 50MB in size.</p>
+                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <h3>How accurate are the transcriptions?</h3>
-                    <p>Our transcriptions are powered by OpenAI's Whisper model, which provides industry-leading accuracy. Quality depends on audio clarity, but typically achieves 95%+ accuracy for clear recordings.</p>
+                    <h3 class="faq-question" data-faq="2">How accurate are the transcriptions?</h3>
+                    <div class="faq-answer" id="faq-2">
+                        <p>Our transcriptions are powered by OpenAI's Whisper model, which provides industry-leading accuracy. Quality depends on audio clarity, but typically achieves 95%+ accuracy for clear recordings.</p>
+                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <h3>What languages are supported?</h3>
-                    <p>We support over 50 languages including English, Spanish, French, German, Italian, Portuguese, Russian, Japanese, Korean, Chinese, Arabic, and Hindi.</p>
+                    <h3 class="faq-question" data-faq="3">What languages are supported?</h3>
+                    <div class="faq-answer" id="faq-3">
+                        <p>We support over 50 languages including English, Spanish, French, German, Italian, Portuguese, Russian, Japanese, Korean, Chinese, Arabic, and Hindi.</p>
+                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <h3>Is my audio data secure?</h3>
-                    <p>Yes, your privacy is our priority. Audio files are processed securely and automatically deleted from our servers within 24 hours. We never store or share your content.</p>
+                    <h3 class="faq-question" data-faq="4">Is my audio data secure?</h3>
+                    <div class="faq-answer" id="faq-4">
+                        <p>Yes, your privacy is our priority. Audio files are processed securely and automatically deleted from our servers within 24 hours. We never store or share your content.</p>
+                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <h3>How long does transcription take?</h3>
-                    <p>Processing time depends on file length and server load, but most files are transcribed within 2-5 minutes. Longer files may take proportionally more time.</p>
+                    <h3 class="faq-question" data-faq="5">How long does transcription take?</h3>
+                    <div class="faq-answer" id="faq-5">
+                        <p>Processing time depends on file length and server load, but most files are transcribed within 2-5 minutes. Longer files may take proportionally more time.</p>
+                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <h3>Can I edit the transcription?</h3>
-                    <p>You can copy the transcription text and edit it in any text editor. We also provide download functionality to save the transcription as a text file.</p>
+                    <h3 class="faq-question" data-faq="6">Can I edit the transcription?</h3>
+                    <div class="faq-answer" id="faq-6">
+                        <p>You can copy the transcription text and edit it in any text editor. We also provide download functionality to save the transcription as a text file.</p>
+                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <h3>What's the maximum file size?</h3>
-                    <p>Currently, we support audio files up to 50MB. For larger files, consider compressing the audio or splitting it into smaller segments.</p>
+                    <h3 class="faq-question" data-faq="7">What's the maximum file size?</h3>
+                    <div class="faq-answer" id="faq-7">
+                        <p>Currently, we support audio files up to 50MB. For larger files, consider compressing the audio or splitting it into smaller segments.</p>
+                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <h3>Do you offer bulk transcription?</h3>
-                    <p>Currently, our service processes one file at a time. For bulk transcription needs, please contact us for enterprise solutions.</p>
+                    <h3 class="faq-question" data-faq="8">Do you offer bulk transcription?</h3>
+                    <div class="faq-answer" id="faq-8">
+                        <p>Currently, our service processes one file at a time. For bulk transcription needs, please contact us for enterprise solutions.</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Privacy Policy Section -->
-    <section id="privacy" class="section page-section">
-        <div class="page-container">
-            <h2 class="page-title">Privacy Policy</h2>
-            <div class="page-content">
-                <p><strong>Last updated:</strong> December 2024</p>
-
-                <h3>Information We Collect</h3>
-                <p>AudioScribe is committed to protecting your privacy. When you use our service, we may collect:</p>
-                
-                <h4>Audio Files</h4>
-                <p>We temporarily process the audio files you upload for transcription purposes. These files are:</p>
-                <ul>
-                    <li>Processed using secure, industry-standard encryption</li>
-                    <li>Automatically deleted from our servers within 24 hours of processing</li>
-                    <li>Never stored permanently or used for any purpose other than transcription</li>
-                    <li>Not accessible to any third parties</li>
-                </ul>
-
-                <h4>Usage Information</h4>
-                <p>We may collect basic usage statistics including:</p>
-                <ul>
-                    <li>File size and format information</li>
-                    <li>Processing time and success rates</li>
-                    <li>General geographic location (country level)</li>
-                    <li>Browser and device information for compatibility</li>
-                </ul>
-
-                <h3>How We Use Information</h3>
-                <p>We use collected information solely to:</p>
-                <ul>
-                    <li>Provide transcription services</li>
-                    <li>Improve service quality and performance</li>
-                    <li>Ensure system security and prevent abuse</li>
-                    <li>Comply with legal obligations</li>
-                </ul>
-
-                <h3>Data Security</h3>
-                <p>We implement appropriate security measures including:</p>
-                <ul>
-                    <li>Encryption of data in transit and at rest</li>
-                    <li>Regular security audits and updates</li>
-                    <li>Limited access controls for processing systems</li>
-                    <li>Automatic data deletion after processing</li>
-                </ul>
-
-                <h3>Third-Party Services</h3>
-                <p>We use HuggingFace's infrastructure for AI processing. Your data is subject to their privacy policies during processing, but files are not permanently stored on their systems.</p>
-
-                <h3>Your Rights</h3>
-                <p>You have the right to:</p>
-                <ul>
-                    <li>Request information about data processing</li>
-                    <li>Request deletion of any stored data</li>
-                    <li>Opt out of usage analytics</li>
-                    <li>Contact us with privacy concerns</li>
-                </ul>
-
-                <h3>Contact Us</h3>
-                <p>For privacy-related questions, contact us at: privacy@audioscribe.com</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Terms of Service Section -->
-    <section id="terms" class="section page-section">
-        <div class="page-container">
-            <h2 class="page-title">Terms of Service</h2>
-            <div class="page-content">
-                <p><strong>Last updated:</strong> December 2024</p>
-
-                <h3>Acceptance of Terms</h3>
-                <p>By using AudioScribe, you agree to these Terms of Service. If you do not agree, please do not use our service.</p>
-
-                <h3>Service Description</h3>
-                <p>AudioScribe provides AI-powered audio transcription services. We convert audio files into text using advanced machine learning technology.</p>
-
-                <h3>User Responsibilities</h3>
-                <p>You agree to:</p>
-                <ul>
-                    <li>Only upload content you own or have permission to transcribe</li>
-                    <li>Not upload illegal, harmful, or copyrighted content</li>
-                    <li>Use the service for lawful purposes only</li>
-                    <li>Not attempt to reverse engineer or abuse our systems</li>
-                    <li>Respect file size and usage limitations</li>
-                </ul>
-
-                <h3>Prohibited Content</h3>
-                <p>You may not upload:</p>
-                <ul>
-                    <li>Copyrighted material without permission</li>
-                    <li>Illegal or harmful content</li>
-                    <li>Content that violates others' privacy</li>
-                    <li>Malicious files or code</li>
-                    <li>Content that promotes hate speech or violence</li>
-                </ul>
-
-                <h3>Service Availability</h3>
-                <p>We strive for high availability but cannot guarantee uninterrupted service. We may perform maintenance, updates, or experience technical issues that temporarily affect service availability.</p>
-
-                <h3>Accuracy Disclaimer</h3>
-                <p>While we strive for high accuracy, transcriptions are provided "as is" and may contain errors. We recommend reviewing all transcriptions for accuracy, especially for critical applications.</p>
-
-                <h3>Limitation of Liability</h3>
-                <p>AudioScribe shall not be liable for:</p>
-                <ul>
-                    <li>Transcription errors or inaccuracies</li>
-                    <li>Service interruptions or downtime</li>
-                    <li>Loss of data or files</li>
-                    <li>Consequential or indirect damages</li>
-                </ul>
-
-                <h3>Intellectual Property</h3>
-                <p>You retain all rights to your uploaded content and transcriptions. AudioScribe claims no ownership over user content.</p>
-
-                <h3>Termination</h3>
-                <p>We may terminate or suspend access to users who violate these terms or engage in abusive behavior.</p>
-
-                <h3>Changes to Terms</h3>
-                <p>We may update these terms periodically. Continued use of the service constitutes acceptance of updated terms.</p>
-
-                <h3>Contact Information</h3>
-                <p>For questions about these terms, contact us at: legal@audioscribe.com</p>
             </div>
         </div>
     </section>
@@ -300,7 +212,7 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
-                <h4>AudioScribe</h4>
+                <h4 id="footer-site-name">AudioScribe</h4>
                 <p>Professional audio transcription service powered by AI</p>
             </div>
             <div class="footer-section">
@@ -314,8 +226,8 @@
             <div class="footer-section">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="#privacy">Privacy Policy</a></li>
-                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -327,7 +239,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 AudioScribe. All rights reserved.</p>
+            <p>&copy; 2025 <span id="footer-copyright-name">AudioScribe</span>. All rights reserved.</p>
         </div>
     </footer>
 

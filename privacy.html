@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - AudioScribe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" id="nav-logo-text">AudioScribe</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Privacy Policy Section -->
+    <section class="section page-section">
+        <div class="page-container">
+            <h1 class="page-title">Privacy Policy</h1>
+            <div class="page-content">
+                <p><strong>Last updated:</strong> December 2024</p>
+
+                <h3>Information We Collect</h3>
+                <p><span id="site-name-1">AudioScribe</span> is committed to protecting your privacy. When you use our service, we may collect:</p>
+                
+                <h4>Audio Files</h4>
+                <p>We temporarily process the audio files you upload for transcription purposes. These files are:</p>
+                <ul>
+                    <li>Processed using secure, industry-standard encryption</li>
+                    <li>Automatically deleted from our servers within 24 hours of processing</li>
+                    <li>Never stored permanently or used for any purpose other than transcription</li>
+                    <li>Not accessible to any third parties</li>
+                </ul>
+
+                <h4>Usage Information</h4>
+                <p>We may collect basic usage statistics including:</p>
+                <ul>
+                    <li>File size and format information</li>
+                    <li>Processing time and success rates</li>
+                    <li>General geographic location (country level)</li>
+                    <li>Browser and device information for compatibility</li>
+                </ul>
+
+                <h3>How We Use Information</h3>
+                <p>We use collected information solely to:</p>
+                <ul>
+                    <li>Provide transcription services</li>
+                    <li>Improve service quality and performance</li>
+                    <li>Ensure system security and prevent abuse</li>
+                    <li>Comply with legal obligations</li>
+                </ul>
+
+                <h3>Data Security</h3>
+                <p>We implement appropriate security measures including:</p>
+                <ul>
+                    <li>Encryption of data in transit and at rest</li>
+                    <li>Regular security audits and updates</li>
+                    <li>Limited access controls for processing systems</li>
+                    <li>Automatic data deletion after processing</li>
+                </ul>
+
+                <h3>Third-Party Services</h3>
+                <p>We use HuggingFace's infrastructure for AI processing. Your data is subject to their privacy policies during processing, but files are not permanently stored on their systems.</p>
+
+                <h3>Your Rights</h3>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Request information about data processing</li>
+                    <li>Request deletion of any stored data</li>
+                    <li>Opt out of usage analytics</li>
+                    <li>Contact us with privacy concerns</li>
+                </ul>
+
+                <h3>Contact Us</h3>
+                <p>For privacy-related questions, contact us at: privacy@audioscribe.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4 id="footer-site-name">AudioScribe</h4>
+                <p>Professional audio transcription service powered by AI</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="mailto:support@audioscribe.com">Contact Us</a></li>
+                    <li><a href="index.html#faq">Help Center</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 <span id="footer-copyright-name">AudioScribe</span>. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Website configuration - Change the site name here
+        const SITE_CONFIG = {
+            name: "AudioScribe"
+        };
+
+        // Initialize site name throughout the website
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update navigation logo
+            document.getElementById('nav-logo-text').textContent = SITE_CONFIG.name;
+            
+            // Update content references
+            document.getElementById('site-name-1').textContent = SITE_CONFIG.name;
+            
+            // Update footer
+            document.getElementById('footer-site-name').textContent = SITE_CONFIG.name;
+            document.getElementById('footer-copyright-name').textContent = SITE_CONFIG.name;
+        });
+    </script>
+</body>
+</html>
