@@ -141,7 +141,8 @@ async function transcribeAudio() {
     formData.append("language", language);
 
     try {
-        let response = await fetch("https://elserrgio-transcribe-audio.hf.space/transcribe/", {
+        let response = await fetch("https://elserrgio-transcribe-audio-faster.hf.space/transcribe/", {
+        //let response = await fetch("https://elserrgio-transcribe-audio.hf.space/transcribe/", {
         //let response = await fetch("http://127.0.0.1:8000/transcribe/", {
             method: "POST",
             body: formData
